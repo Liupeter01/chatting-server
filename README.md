@@ -1,26 +1,5 @@
-# FullStackChattingDemo
+# Chatting-server
 ## 0x00 Description
-
-FullStackChattingDemo is a real-time chat application built using C++17, Boost and gRPC, featuring a distributed TCP server architecture. 
-
-1. For Client development, we are using basic QT6 framework to build the end-user teminal. 
-
-2. For Server development, we are using a mixed of C++ and Nodejs. We are mainly using boost-1.84(beast asio uuid mysql), grpc-1.50.2, hiredis, jsoncpp, ada(url parsing), spdlog, boringssl libraries.
-
-   **we are going to use boringssl instead of openssl for gRPC framework**
-
-
-
-
-## 0x01 All Servers in this project
-
-### Captcha-server
-
-Captcha-server imported `ioredis`, `grpc-js`, `pproto-loader`, `nodemailer`, `uuidv4` libraries to the project. 
-
-### Balance-server
-
-### Chatting-server
 
 1. User Login`(SERVICE_LOGINSERVER)`
 
@@ -31,42 +10,6 @@ Captcha-server imported `ioredis`, `grpc-js`, `pproto-loader`, `nodemailer`, `uu
 4. User Who Initiated Friend Request `(SERVICE_FRIENDREQUESTSENDER)`
 
 5. User Who Received Friend Request`(SERVICE_FRIENDREQUESTCONFIRM)`
-
-   
-
-### Gateway-server
-
-All services are using HTTP short connections, users are going to create a POST method to the gateway-server and gateway-server is going to respond to the client requests accordingly.
-
-1. `/get_verification`
-
-   User sends a email address to gateway-server and request to get a Email verification code(CPATCHA) request to server. server using **gRPC** protocol to communicate with NodeJS server(`captcha-server`) and create an unique **uuid** for the user. The **uuid** is going to store in a **Redis** memory database with a timeout setting, user should register the new account within the valid time or request for a new one instead.
-
-   
-
-2. `/post_registration`
-
-   After request for a **valid CPATCHA**, user could trigger registration confirm button to post registration request to the server. Server will whether this user's identity is collision with any other user inside the system, if no collision found the info will be stored inside database. ~~however, SQL injection protection mechanism is still not available yet!~~
-
-   
-
-3. `/check_accountexists`
-
-   After account registration, when user demands to change his/her password, we have to verifiy the account existance.
-
-   
-
-4. `/reset_password`
-
-   After executing `/check_accountexists` process, then user could enter his/her new password info, and client terminal could send the new password info to the the server. server will do the similiar process in `/post_registration` and alter the existing data inside the database.
-
-   
-
-5. `/trylogin_server`
-
-   please be careful, `trylogin_server` **could not login into** the real server directly. **It's a server relay!**
-
-   The identification is similiar to `/check_accountexists` authenication process. The `gateway-server` will communicate with `balance-server` for the address of `chatting-server` by using **gRPC**, and `chatting-server` will do load-balancing and return the lowest load server info back. However, The user connection status **will not** maintained and managed by `gateway-server` and `gateway-server` doesn't care about this either, client will receive the real address of `chatting-server` and connecting to it by itself. ~~however, SQL injection protection mechanism is still not available yet!~~
 
    
 
@@ -275,296 +218,84 @@ All services are using HTTP short connections, users are going to create a POST 
 
 
 
-
-
-​	
-
 ### Servers' Configurations
 
-Most of those basic configurations are using *.ini file, except `Captcha-server`.
+```ini
+[BalanceService]
+host=127.0.0.1
+port=59900
+[gRPCServer]
+server_name=ChattingServer0
+host=127.0.0.1
+port=64400
+[ChattingServer]
+port=60000
+send_queue_size=1000
+[Redis]
+host=127.0.0.1
+port=16379
+password=123456
+[MySQL]
+username=root
+password=123456
+database=chatting
+host=localhost
+port=3307
+#timeoutsetting(s) for heart pulse
+timeout=60
+```
 
-1. Captcha-server**(config.json)**
 
-   ```bash
-   {
-         "email": {
-                   "host": "please set to your email host name",
-                   "port": "please set to your email port",
-                   "username": "please set to your email address",
-                   "password": "please use your own authorized code"
-         },
-         "mysql": {
-                   "host": "127.0.0.1",
-                   "port": 3307,
-                   "password": 123456
-         },
-         "redis": {
-                   "host": "127.0.0.1",
-                   "port": 16379,
-                   "password": 123456
-         }
-   }
-   ```
-
-   
-
-2. Gateway-server**(config.ini)**
-
-   ```ini
-   [GateServer]
-   port = 8080
-   [VerificationServer]
-   host=127.0.0.1
-   port = 65500
-   [MySQL]
-   username=root
-   password=123456
-   database=chatting
-   host=localhost
-   port=3307
-   #timeoutsetting(s) for heart pulse
-   timeout=60 
-   [Redis]
-   host=127.0.0.1
-   port=16379
-   password=123456
-   [BalanceService]
-   host=127.0.0.1
-   port=59900
-   ```
-
-   
-
-3. Balance-server**(config.ini)**
-
-   ```ini
-   [BalanceService]
-   host=127.0.0.1
-   port=59900
-   [Redis]
-   host=127.0.0.1
-   port=16379
-   password=123456
-   ```
-
-   
-
-4. Chatting-server**(config.ini)**
-
-   ```ini
-   [BalanceService]
-   host=127.0.0.1
-   port=59900
-   [gRPCServer]
-   server_name=ChattingServer0
-   host=127.0.0.1
-   port=64400
-   [ChattingServer]
-   port=60000
-   send_queue_size=1000
-   [Redis]
-   host=127.0.0.1
-   port=16379
-   password=123456
-   [MySQL]
-   username=root
-   password=123456
-   database=chatting
-   host=localhost
-   port=3307
-   #timeoutsetting(s) for heart pulse
-   timeout=60
-   ```
-
-   
 
 ## 0x03 Developer Quick Start
 
 ### Platform Support
 Windows, Linux, MacOS(Intel & Apple Silicon M)
 
-### Download FullStackChattingDemo
+### Download Chatting-server
 
 ```bash
-git clone https://github.com/Liupeter01/FullStackChattingDemo
-git submodule update --init --recursive
+git clone https://github.com/Liupeter01/chatting-server --depth 1
 ```
 
-### Compile and build FullStackChattingDemo
+### Compile Chattingserver
 
-Those are submodules building tutorial links.
+grpc-1.50.2 will be downloaded automatically, and we will use boringssl instead of openssl
 
-[Gateway-server](https://github.com/Liupeter01/gateway-server/blob/main/README.md)
+**For Windows users, fetch content will download all of those for you**
 
-[Balance-server](https://github.com/Liupeter01/balance-server/blob/main/README.md)
+1. For Linux/Windows
 
-[Chatting-server](https://github.com/Liupeter01/chatting-server/blob/main/README.md)
+   ```bash
+   cd FullStackChattingDemo/chatting-server
+   git submodule update --init
+   cmake -Bbuild -DCMAKE_BUILD_TYPE=Release
+   cmake --build build --parallel [x]
+   ```
 
-[Captcha-server](https://github.com/Liupeter01/captcha-server/blob/main/README.md)
+2. For MacOS
 
-[Chatting-client](https://github.com/Liupeter01/chatting-client/blob/main/README.md)
+   ```bash
+   cd FullStackChattingDemo/chatting-server
+   git submodule update --init
+   cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INCLUDE_PATH=/usr/local/include
+   cmake --build build --parallel [x]
+   ```
 
 
 
 ### How to Execute
 
-1. Activate Redis and MySQL service first
+1. Activate Redis and MySQL service
 
    **IMPORTANT: you have to start those services first!!**
 
    
 
-2. Execute Servers' program
+2. **Start to execute `balance-server` first**
 
-   **Gateway-server should be started after Captcha-server!**
-
-   ```bash
-   cd captcha-server
-   npm install
-   # you could use nodemon
-   node index.js
-   ```
-
-   
-
-   Then start gateway-server
+3. Execute Servers' program
 
    ```bash
-   ./gateway-server/build/GatewayServer
-   ```
-   
-   
-   
-   **Chatting-server should be started after Balance-server!**
-   
-   ```bash
-   ./balance-server/build/BalanceServer
    ./chatting-server/build/ChattingServer
    ```
-
-
-
-## 0x04 Error handling
-
-1. SyntaxError: Unexpected token  in JSON at position 0
-   ```bash
-   SyntaxError: Unexpected token  in JSON at position 0
-       at JSON.parse (<anonymous>)
-   ```
-
-   Solving
-   please change your encoding method to UTF-8, especially for VSCode user
-
-   Referring Url
-   https://stackoverflow.com/questions/55960919/nodejs-syntaxerror-unexpected-token-in-json-at-position-0
-
-   
-
-2. undefined symbol upb_alloc_global
-   ```cmake
-   set(protobuf_BUILD_LIBUPB OFF)
-   ```
-
-   Referring Url
-   https://github.com/grpc/grpc/issues/35794
-
-   
-
-3. fatal error: 'unicode/locid.h' 'unicode/ucnv.h' file not found (usually happened on MacOS)
-   Download icu 74.1
-   ```bash
-   wget https://github.com/unicode-org/icu/releases/download/release-74-1/icu4c-74_1-src.tgz
-   ```
-
-   Compile and Install
-   ```bash
-   git clone https://github.com/unicode-org/icu.git
-   cd icu/source
-   ./configure && make -j[x]
-   sudo make install
-   ```
-
-   set cmake variable
-   ```cmake
-   cmake -Bbuild -DCMAKE_INCLUDE_PATH=/usr/local/include
-   cmake --build build --parallel x
-   ```
-
-   Referring Url
-   https://unicode-org.github.io/icu/userguide/icu4c/build.html
-
-   
-
-4. boringssl undefined win32
-   ```cmake
-   set(OPENSSL_NO_ASM ON)
-   ```
-
-   Referring Url
-   https://github.com/grpc/grpc/issues/16376
-
-   
-
-5. Handling gRPC issue
-   Issue description
-
-   ```bash
-   CMake Error: install(EXPORT "protobuf-targets" ...) includes target "libprotobuf-lite" which requires target "absl_node_hash_map" that is not in any export set.
-   ```
-
-   Problem Solving
-   ```cmake
-   set(ABSL_ENABLE_INSTALL ON)
-   ```
-
-   Referring Url
-    https://github.com/protocolbuffers/protobuf/issues/12185
-    https://github.com/protocolbuffers/protobuf/issues/12185#issuecomment-1594685860
-
-   
-
-6. E No address added out of total 1 resolved
-
-   you have to start the main server first and then open nodejs service
-
-   
-
-## 0x05 Showcases
-
-### Client
-
-1. Main page
-
-![](./assets/client_main.png)
-
-2. Register page
-
-![](./assets/register_empty.png)
-
-![](./assets/register_with_text.png)
-
-![](./assets/after_reg.png)
-
-3. Chatting Main Dialog
-
-<img src="./assets/client_interface_1.png" alt="client_interface_1" style="zoom: 67%;" />
-
-4. Search and add new contact
-
-<img src="./assets/client_interface_4.png" alt="image-20241008180452143" style="zoom:67%;" />
-
-<img src="./assets/client_interface_2.png" alt="image-20241001102111981" style="zoom:67%;" />
-
-5. Contact Page
-
-<img src="./assets/client_interface_3.png" alt="client_interface_3" style="zoom:67%;" />
-
-
-
-### Captcha-server
-
-1. Sending verification code to the user
-
-<img src="./assets/verification.png" style="zoom: 67%;" />
-
-<img src="./assets/result.png" style="zoom:67%;" />
