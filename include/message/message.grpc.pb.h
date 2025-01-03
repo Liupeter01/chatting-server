@@ -262,29 +262,37 @@ class BalancerService final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::LoginChattingResponse>>(PrepareAsyncUserLoginToServerRaw(context, request, cq));
     }
     // register current chatting server to balance server
-    virtual ::grpc::Status RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::message::GrpcChattingServerResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> AsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(AsyncRegisterChattingServerInstanceRaw(context, request, cq));
+    virtual ::grpc::Status RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::message::GrpcStatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> AsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(AsyncRegisterChattingServerInstanceRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> PrepareAsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(PrepareAsyncRegisterChattingServerInstanceRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> PrepareAsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(PrepareAsyncRegisterChattingServerInstanceRaw(context, request, cq));
     }
     // register current grpc server which belongs to chattingserver to balance
     // server
-    virtual ::grpc::Status RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::message::GrpcChattingServerResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> AsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(AsyncRegisterChattingGrpcServerRaw(context, request, cq));
+    virtual ::grpc::Status RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::message::GrpcStatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> AsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(AsyncRegisterChattingGrpcServerRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> PrepareAsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(PrepareAsyncRegisterChattingGrpcServerRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> PrepareAsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(PrepareAsyncRegisterChattingGrpcServerRaw(context, request, cq));
     }
     // when chatting server shutdown delete its existance in balance server
-    virtual ::grpc::Status ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::message::GrpcChattingServerResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> AsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(AsyncChattingServerShutDownRaw(context, request, cq));
+    virtual ::grpc::Status ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::message::GrpcStatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> AsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(AsyncChattingServerShutDownRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>> PrepareAsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>>(PrepareAsyncChattingServerShutDownRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> PrepareAsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(PrepareAsyncChattingServerShutDownRaw(context, request, cq));
+    }
+    // when chatting grpc server shutdown delete its existance in balance server
+    virtual ::grpc::Status ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::message::GrpcStatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> AsyncChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(AsyncChattingGrpcServerShutDownRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>> PrepareAsyncChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>>(PrepareAsyncChattingGrpcServerShutDownRaw(context, request, cq));
     }
     // chatting server acquires other servers info through this service
     virtual ::grpc::Status GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::message::PeerResponse* response) = 0;
@@ -313,15 +321,18 @@ class BalancerService final {
       virtual void UserLoginToServer(::grpc::ClientContext* context, const ::message::LoginChattingServer* request, ::message::LoginChattingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void UserLoginToServer(::grpc::ClientContext* context, const ::message::LoginChattingServer* request, ::message::LoginChattingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // register current chatting server to balance server
-      virtual void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // register current grpc server which belongs to chattingserver to balance
       // server
-      virtual void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // when chatting server shutdown delete its existance in balance server
-      virtual void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // when chatting grpc server shutdown delete its existance in balance server
+      virtual void ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // chatting server acquires other servers info through this service
       virtual void GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
@@ -337,12 +348,14 @@ class BalancerService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GetAllocatedChattingServer>* PrepareAsyncAddNewUserToServerRaw(::grpc::ClientContext* context, const ::message::RegisterToBalancer& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::LoginChattingResponse>* AsyncUserLoginToServerRaw(::grpc::ClientContext* context, const ::message::LoginChattingServer& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::LoginChattingResponse>* PrepareAsyncUserLoginToServerRaw(::grpc::ClientContext* context, const ::message::LoginChattingServer& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* AsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* PrepareAsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* AsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* PrepareAsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* AsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcChattingServerResponse>* PrepareAsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* AsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* PrepareAsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* AsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* PrepareAsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* AsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* PrepareAsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* AsyncChattingGrpcServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::GrpcStatusResponse>* PrepareAsyncChattingGrpcServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::PeerResponse>* AsyncGetPeerChattingServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::PeerResponse>* PrepareAsyncGetPeerChattingServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::PeerResponse>* AsyncGetPeerGrpcServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -365,26 +378,33 @@ class BalancerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::LoginChattingResponse>> PrepareAsyncUserLoginToServer(::grpc::ClientContext* context, const ::message::LoginChattingServer& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::LoginChattingResponse>>(PrepareAsyncUserLoginToServerRaw(context, request, cq));
     }
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::message::GrpcChattingServerResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> AsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(AsyncRegisterChattingServerInstanceRaw(context, request, cq));
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::message::GrpcStatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> AsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(AsyncRegisterChattingServerInstanceRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> PrepareAsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(PrepareAsyncRegisterChattingServerInstanceRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> PrepareAsyncRegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(PrepareAsyncRegisterChattingServerInstanceRaw(context, request, cq));
     }
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::message::GrpcChattingServerResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> AsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(AsyncRegisterChattingGrpcServerRaw(context, request, cq));
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::message::GrpcStatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> AsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(AsyncRegisterChattingGrpcServerRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> PrepareAsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(PrepareAsyncRegisterChattingGrpcServerRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> PrepareAsyncRegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(PrepareAsyncRegisterChattingGrpcServerRaw(context, request, cq));
     }
-    ::grpc::Status ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::message::GrpcChattingServerResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> AsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(AsyncChattingServerShutDownRaw(context, request, cq));
+    ::grpc::Status ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::message::GrpcStatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> AsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(AsyncChattingServerShutDownRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>> PrepareAsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>>(PrepareAsyncChattingServerShutDownRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> PrepareAsyncChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(PrepareAsyncChattingServerShutDownRaw(context, request, cq));
+    }
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::message::GrpcStatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> AsyncChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(AsyncChattingGrpcServerShutDownRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>> PrepareAsyncChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>>(PrepareAsyncChattingGrpcServerShutDownRaw(context, request, cq));
     }
     ::grpc::Status GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::message::PeerResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::PeerResponse>> AsyncGetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) {
@@ -407,12 +427,14 @@ class BalancerService final {
       void AddNewUserToServer(::grpc::ClientContext* context, const ::message::RegisterToBalancer* request, ::message::GetAllocatedChattingServer* response, ::grpc::ClientUnaryReactor* reactor) override;
       void UserLoginToServer(::grpc::ClientContext* context, const ::message::LoginChattingServer* request, ::message::LoginChattingResponse* response, std::function<void(::grpc::Status)>) override;
       void UserLoginToServer(::grpc::ClientContext* context, const ::message::LoginChattingServer* request, ::message::LoginChattingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) override;
-      void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) override;
-      void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response, std::function<void(::grpc::Status)>) override;
-      void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterChattingServerInstance(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterChattingGrpcServer(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void ChattingServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void ChattingGrpcServerShutDown(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response, std::function<void(::grpc::Status)>) override;
       void GetPeerChattingServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetPeerGrpcServerInfo(::grpc::ClientContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response, std::function<void(::grpc::Status)>) override;
@@ -432,12 +454,14 @@ class BalancerService final {
     ::grpc::ClientAsyncResponseReader< ::message::GetAllocatedChattingServer>* PrepareAsyncAddNewUserToServerRaw(::grpc::ClientContext* context, const ::message::RegisterToBalancer& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::LoginChattingResponse>* AsyncUserLoginToServerRaw(::grpc::ClientContext* context, const ::message::LoginChattingServer& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::LoginChattingResponse>* PrepareAsyncUserLoginToServerRaw(::grpc::ClientContext* context, const ::message::LoginChattingServer& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* AsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* PrepareAsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* AsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* PrepareAsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerRegRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* AsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::GrpcChattingServerResponse>* PrepareAsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcChattingServerShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* AsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* PrepareAsyncRegisterChattingServerInstanceRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* AsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* PrepareAsyncRegisterChattingGrpcServerRaw(::grpc::ClientContext* context, const ::message::GrpcRegisterRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* AsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* PrepareAsyncChattingServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* AsyncChattingGrpcServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::GrpcStatusResponse>* PrepareAsyncChattingGrpcServerShutDownRaw(::grpc::ClientContext* context, const ::message::GrpcShutdownRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::PeerResponse>* AsyncGetPeerChattingServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::PeerResponse>* PrepareAsyncGetPeerChattingServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::PeerResponse>* AsyncGetPeerGrpcServerInfoRaw(::grpc::ClientContext* context, const ::message::PeerListsRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -447,6 +471,7 @@ class BalancerService final {
     const ::grpc::internal::RpcMethod rpcmethod_RegisterChattingServerInstance_;
     const ::grpc::internal::RpcMethod rpcmethod_RegisterChattingGrpcServer_;
     const ::grpc::internal::RpcMethod rpcmethod_ChattingServerShutDown_;
+    const ::grpc::internal::RpcMethod rpcmethod_ChattingGrpcServerShutDown_;
     const ::grpc::internal::RpcMethod rpcmethod_GetPeerChattingServerInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_GetPeerGrpcServerInfo_;
   };
@@ -462,12 +487,14 @@ class BalancerService final {
     // user send SERVICE_LOGINSERVER request
     virtual ::grpc::Status UserLoginToServer(::grpc::ServerContext* context, const ::message::LoginChattingServer* request, ::message::LoginChattingResponse* response);
     // register current chatting server to balance server
-    virtual ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response);
+    virtual ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response);
     // register current grpc server which belongs to chattingserver to balance
     // server
-    virtual ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response);
+    virtual ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response);
     // when chatting server shutdown delete its existance in balance server
-    virtual ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response);
+    virtual ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response);
+    // when chatting grpc server shutdown delete its existance in balance server
+    virtual ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response);
     // chatting server acquires other servers info through this service
     virtual ::grpc::Status GetPeerChattingServerInfo(::grpc::ServerContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response);
     // chatting server acquires other chatting servers' grpc connection info
@@ -525,11 +552,11 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRegisterChattingServerInstance(::grpc::ServerContext* context, ::message::GrpcChattingServerRegRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcChattingServerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRegisterChattingServerInstance(::grpc::ServerContext* context, ::message::GrpcRegisterRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -545,11 +572,11 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRegisterChattingGrpcServer(::grpc::ServerContext* context, ::message::GrpcChattingServerRegRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcChattingServerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRegisterChattingGrpcServer(::grpc::ServerContext* context, ::message::GrpcRegisterRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -565,12 +592,32 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestChattingServerShutDown(::grpc::ServerContext* context, ::message::GrpcChattingServerShutdownRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcChattingServerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestChattingServerShutDown(::grpc::ServerContext* context, ::message::GrpcShutdownRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestChattingGrpcServerShutDown(::grpc::ServerContext* context, ::message::GrpcShutdownRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::GrpcStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -579,7 +626,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodAsync(5);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_GetPeerChattingServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -590,7 +637,7 @@ class BalancerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPeerChattingServerInfo(::grpc::ServerContext* context, ::message::PeerListsRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::PeerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -599,7 +646,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_GetPeerGrpcServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -610,10 +657,10 @@ class BalancerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPeerGrpcServerInfo(::grpc::ServerContext* context, ::message::PeerListsRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::PeerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_AddNewUserToServer<WithAsyncMethod_UserLoginToServer<WithAsyncMethod_RegisterChattingServerInstance<WithAsyncMethod_RegisterChattingGrpcServer<WithAsyncMethod_ChattingServerShutDown<WithAsyncMethod_GetPeerChattingServerInfo<WithAsyncMethod_GetPeerGrpcServerInfo<Service > > > > > > > AsyncService;
+  typedef WithAsyncMethod_AddNewUserToServer<WithAsyncMethod_UserLoginToServer<WithAsyncMethod_RegisterChattingServerInstance<WithAsyncMethod_RegisterChattingGrpcServer<WithAsyncMethod_ChattingServerShutDown<WithAsyncMethod_ChattingGrpcServerShutDown<WithAsyncMethod_GetPeerChattingServerInfo<WithAsyncMethod_GetPeerGrpcServerInfo<Service > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_AddNewUserToServer : public BaseClass {
    private:
@@ -675,25 +722,25 @@ class BalancerService final {
    public:
     WithCallbackMethod_RegisterChattingServerInstance() {
       ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response) { return this->RegisterChattingServerInstance(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response) { return this->RegisterChattingServerInstance(context, request, response); }));}
     void SetMessageAllocatorFor_RegisterChattingServerInstance(
-        ::grpc::MessageAllocator< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>* allocator) {
+        ::grpc::MessageAllocator< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_RegisterChattingServerInstance() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RegisterChattingServerInstance(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_RegisterChattingGrpcServer : public BaseClass {
@@ -702,25 +749,25 @@ class BalancerService final {
    public:
     WithCallbackMethod_RegisterChattingGrpcServer() {
       ::grpc::Service::MarkMethodCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::GrpcChattingServerRegRequest* request, ::message::GrpcChattingServerResponse* response) { return this->RegisterChattingGrpcServer(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::message::GrpcRegisterRequest* request, ::message::GrpcStatusResponse* response) { return this->RegisterChattingGrpcServer(context, request, response); }));}
     void SetMessageAllocatorFor_RegisterChattingGrpcServer(
-        ::grpc::MessageAllocator< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>* allocator) {
+        ::grpc::MessageAllocator< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_RegisterChattingGrpcServer() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RegisterChattingGrpcServer(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_ChattingServerShutDown : public BaseClass {
@@ -729,25 +776,52 @@ class BalancerService final {
    public:
     WithCallbackMethod_ChattingServerShutDown() {
       ::grpc::Service::MarkMethodCallback(4,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerShutdownRequest, ::message::GrpcChattingServerResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::GrpcChattingServerShutdownRequest* request, ::message::GrpcChattingServerResponse* response) { return this->ChattingServerShutDown(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response) { return this->ChattingServerShutDown(context, request, response); }));}
     void SetMessageAllocatorFor_ChattingServerShutDown(
-        ::grpc::MessageAllocator< ::message::GrpcChattingServerShutdownRequest, ::message::GrpcChattingServerResponse>* allocator) {
+        ::grpc::MessageAllocator< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcChattingServerShutdownRequest, ::message::GrpcChattingServerResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_ChattingServerShutDown() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ChattingServerShutDown(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::message::GrpcShutdownRequest* request, ::message::GrpcStatusResponse* response) { return this->ChattingGrpcServerShutDown(context, request, response); }));}
+    void SetMessageAllocatorFor_ChattingGrpcServerShutDown(
+        ::grpc::MessageAllocator< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ChattingGrpcServerShutDown(
+      ::grpc::CallbackServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_GetPeerChattingServerInfo : public BaseClass {
@@ -755,13 +829,13 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodCallback(5,
+      ::grpc::Service::MarkMethodCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::message::PeerListsRequest, ::message::PeerResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response) { return this->GetPeerChattingServerInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetPeerChattingServerInfo(
         ::grpc::MessageAllocator< ::message::PeerListsRequest, ::message::PeerResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::message::PeerListsRequest, ::message::PeerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -782,13 +856,13 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::message::PeerListsRequest, ::message::PeerResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::message::PeerListsRequest* request, ::message::PeerResponse* response) { return this->GetPeerGrpcServerInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetPeerGrpcServerInfo(
         ::grpc::MessageAllocator< ::message::PeerListsRequest, ::message::PeerResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::message::PeerListsRequest, ::message::PeerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -803,7 +877,7 @@ class BalancerService final {
     virtual ::grpc::ServerUnaryReactor* GetPeerGrpcServerInfo(
       ::grpc::CallbackServerContext* /*context*/, const ::message::PeerListsRequest* /*request*/, ::message::PeerResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_AddNewUserToServer<WithCallbackMethod_UserLoginToServer<WithCallbackMethod_RegisterChattingServerInstance<WithCallbackMethod_RegisterChattingGrpcServer<WithCallbackMethod_ChattingServerShutDown<WithCallbackMethod_GetPeerChattingServerInfo<WithCallbackMethod_GetPeerGrpcServerInfo<Service > > > > > > > CallbackService;
+  typedef WithCallbackMethod_AddNewUserToServer<WithCallbackMethod_UserLoginToServer<WithCallbackMethod_RegisterChattingServerInstance<WithCallbackMethod_RegisterChattingGrpcServer<WithCallbackMethod_ChattingServerShutDown<WithCallbackMethod_ChattingGrpcServerShutDown<WithCallbackMethod_GetPeerChattingServerInfo<WithCallbackMethod_GetPeerGrpcServerInfo<Service > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_AddNewUserToServer : public BaseClass {
@@ -851,7 +925,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -868,7 +942,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -885,7 +959,24 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -896,7 +987,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodGeneric(5);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_GetPeerChattingServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -913,7 +1004,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_GetPeerGrpcServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -976,7 +1067,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -996,7 +1087,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1016,7 +1107,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1025,12 +1116,32 @@ class BalancerService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestChattingGrpcServerShutDown(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetPeerChattingServerInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodRaw(5);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_GetPeerChattingServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1041,7 +1152,7 @@ class BalancerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPeerChattingServerInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1050,7 +1161,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(7);
     }
     ~WithRawMethod_GetPeerGrpcServerInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1061,7 +1172,7 @@ class BalancerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPeerGrpcServerInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1123,7 +1234,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1145,7 +1256,7 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1167,11 +1278,33 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ChattingServerShutDown(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodRawCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ChattingGrpcServerShutDown(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ChattingGrpcServerShutDown(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1180,7 +1313,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodRawCallback(5,
+      ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetPeerChattingServerInfo(context, request, response); }));
@@ -1202,7 +1335,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetPeerGrpcServerInfo(context, request, response); }));
@@ -1280,10 +1413,10 @@ class BalancerService final {
     WithStreamedUnaryMethod_RegisterChattingServerInstance() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>(
+          ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>* streamer) {
+                     ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>* streamer) {
                        return this->StreamedRegisterChattingServerInstance(context,
                          streamer);
                   }));
@@ -1292,12 +1425,12 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingServerInstance(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRegisterChattingServerInstance(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcChattingServerRegRequest,::message::GrpcChattingServerResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRegisterChattingServerInstance(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcRegisterRequest,::message::GrpcStatusResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_RegisterChattingGrpcServer : public BaseClass {
@@ -1307,10 +1440,10 @@ class BalancerService final {
     WithStreamedUnaryMethod_RegisterChattingGrpcServer() {
       ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>(
+          ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::GrpcChattingServerRegRequest, ::message::GrpcChattingServerResponse>* streamer) {
+                     ::message::GrpcRegisterRequest, ::message::GrpcStatusResponse>* streamer) {
                        return this->StreamedRegisterChattingGrpcServer(context,
                          streamer);
                   }));
@@ -1319,12 +1452,12 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerRegRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status RegisterChattingGrpcServer(::grpc::ServerContext* /*context*/, const ::message::GrpcRegisterRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRegisterChattingGrpcServer(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcChattingServerRegRequest,::message::GrpcChattingServerResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRegisterChattingGrpcServer(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcRegisterRequest,::message::GrpcStatusResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ChattingServerShutDown : public BaseClass {
@@ -1334,10 +1467,10 @@ class BalancerService final {
     WithStreamedUnaryMethod_ChattingServerShutDown() {
       ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::GrpcChattingServerShutdownRequest, ::message::GrpcChattingServerResponse>(
+          ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::GrpcChattingServerShutdownRequest, ::message::GrpcChattingServerResponse>* streamer) {
+                     ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>* streamer) {
                        return this->StreamedChattingServerShutDown(context,
                          streamer);
                   }));
@@ -1346,12 +1479,39 @@ class BalancerService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcChattingServerShutdownRequest* /*request*/, ::message::GrpcChattingServerResponse* /*response*/) override {
+    ::grpc::Status ChattingServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedChattingServerShutDown(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcChattingServerShutdownRequest,::message::GrpcChattingServerResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedChattingServerShutDown(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcShutdownRequest,::message::GrpcStatusResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ChattingGrpcServerShutDown : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ChattingGrpcServerShutDown() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::message::GrpcShutdownRequest, ::message::GrpcStatusResponse>* streamer) {
+                       return this->StreamedChattingGrpcServerShutDown(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ChattingGrpcServerShutDown() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ChattingGrpcServerShutDown(::grpc::ServerContext* /*context*/, const ::message::GrpcShutdownRequest* /*request*/, ::message::GrpcStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedChattingGrpcServerShutDown(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::GrpcShutdownRequest,::message::GrpcStatusResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetPeerChattingServerInfo : public BaseClass {
@@ -1359,7 +1519,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetPeerChattingServerInfo() {
-      ::grpc::Service::MarkMethodStreamed(5,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler<
           ::message::PeerListsRequest, ::message::PeerResponse>(
             [this](::grpc::ServerContext* context,
@@ -1386,7 +1546,7 @@ class BalancerService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetPeerGrpcServerInfo() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
           ::message::PeerListsRequest, ::message::PeerResponse>(
             [this](::grpc::ServerContext* context,
@@ -1407,9 +1567,9 @@ class BalancerService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetPeerGrpcServerInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::PeerListsRequest,::message::PeerResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_AddNewUserToServer<WithStreamedUnaryMethod_UserLoginToServer<WithStreamedUnaryMethod_RegisterChattingServerInstance<WithStreamedUnaryMethod_RegisterChattingGrpcServer<WithStreamedUnaryMethod_ChattingServerShutDown<WithStreamedUnaryMethod_GetPeerChattingServerInfo<WithStreamedUnaryMethod_GetPeerGrpcServerInfo<Service > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_AddNewUserToServer<WithStreamedUnaryMethod_UserLoginToServer<WithStreamedUnaryMethod_RegisterChattingServerInstance<WithStreamedUnaryMethod_RegisterChattingGrpcServer<WithStreamedUnaryMethod_ChattingServerShutDown<WithStreamedUnaryMethod_ChattingGrpcServerShutDown<WithStreamedUnaryMethod_GetPeerChattingServerInfo<WithStreamedUnaryMethod_GetPeerGrpcServerInfo<Service > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_AddNewUserToServer<WithStreamedUnaryMethod_UserLoginToServer<WithStreamedUnaryMethod_RegisterChattingServerInstance<WithStreamedUnaryMethod_RegisterChattingGrpcServer<WithStreamedUnaryMethod_ChattingServerShutDown<WithStreamedUnaryMethod_GetPeerChattingServerInfo<WithStreamedUnaryMethod_GetPeerGrpcServerInfo<Service > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_AddNewUserToServer<WithStreamedUnaryMethod_UserLoginToServer<WithStreamedUnaryMethod_RegisterChattingServerInstance<WithStreamedUnaryMethod_RegisterChattingGrpcServer<WithStreamedUnaryMethod_ChattingServerShutDown<WithStreamedUnaryMethod_ChattingGrpcServerShutDown<WithStreamedUnaryMethod_GetPeerChattingServerInfo<WithStreamedUnaryMethod_GetPeerGrpcServerInfo<Service > > > > > > > > StreamedService;
 };
 
 // prepared for distributed chatting service
@@ -1422,20 +1582,20 @@ class DistributedChattingService final {
    public:
     virtual ~StubInterface() {}
     // A send friend request message to another user B
-    virtual ::grpc::Status SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::message::AddNewFriendResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>> AsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>>(AsyncSendFriendRequestRaw(context, request, cq));
+    virtual ::grpc::Status SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::message::FriendResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>> AsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>>(AsyncSendFriendRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>> PrepareAsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>>(PrepareAsyncSendFriendRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>> PrepareAsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>>(PrepareAsyncSendFriendRequestRaw(context, request, cq));
     }
     // User B agreed with user A's friend adding request
-    virtual ::grpc::Status ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::message::AuthoriseResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>> AsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>>(AsyncConfirmFriendRequestRaw(context, request, cq));
+    virtual ::grpc::Status ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::message::FriendResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>> AsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>>(AsyncConfirmFriendRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>> PrepareAsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>>(PrepareAsyncConfirmFriendRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>> PrepareAsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>>(PrepareAsyncConfirmFriendRequestRaw(context, request, cq));
     }
     // Verify that B is still A's friend:
     virtual ::grpc::Status FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::message::AuthoriseResponse* response) = 0;
@@ -1446,58 +1606,58 @@ class DistributedChattingService final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>>(PrepareAsyncFriendshipVerificationRaw(context, request, cq));
     }
     // transfer chatting message from user A to B
-    virtual ::grpc::Status NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::message::SendChattingMsgResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>> AsyncNormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>>(AsyncNormalChattingMsgRaw(context, request, cq));
+    virtual ::grpc::Status SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::message::ChattingTextMsgResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>> AsyncSendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>>(AsyncSendChattingTextMsgRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>> PrepareAsyncNormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>>(PrepareAsyncNormalChattingMsgRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>> PrepareAsyncSendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>>(PrepareAsyncSendChattingTextMsgRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // A send friend request message to another user B
-      virtual void SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // User B agreed with user A's friend adding request
-      virtual void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // Verify that B is still A's friend:
       virtual void FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // transfer chatting message from user A to B
-      virtual void NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>* AsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AddNewFriendResponse>* PrepareAsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>* AsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>* PrepareAsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>* AsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>* PrepareAsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>* AsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::FriendResponse>* PrepareAsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>* AsyncFriendshipVerificationRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::AuthoriseResponse>* PrepareAsyncFriendshipVerificationRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>* AsyncNormalChattingMsgRaw(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::SendChattingMsgResponse>* PrepareAsyncNormalChattingMsgRaw(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>* AsyncSendChattingTextMsgRaw(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::message::ChattingTextMsgResponse>* PrepareAsyncSendChattingTextMsgRaw(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::message::AddNewFriendResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>> AsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>>(AsyncSendFriendRequestRaw(context, request, cq));
+    ::grpc::Status SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::message::FriendResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>> AsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>>(AsyncSendFriendRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>> PrepareAsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>>(PrepareAsyncSendFriendRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>> PrepareAsyncSendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>>(PrepareAsyncSendFriendRequestRaw(context, request, cq));
     }
-    ::grpc::Status ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::message::AuthoriseResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>> AsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>>(AsyncConfirmFriendRequestRaw(context, request, cq));
+    ::grpc::Status ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::message::FriendResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>> AsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>>(AsyncConfirmFriendRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>> PrepareAsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>>(PrepareAsyncConfirmFriendRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>> PrepareAsyncConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>>(PrepareAsyncConfirmFriendRequestRaw(context, request, cq));
     }
     ::grpc::Status FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::message::AuthoriseResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>> AsyncFriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
@@ -1506,24 +1666,24 @@ class DistributedChattingService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>> PrepareAsyncFriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>>(PrepareAsyncFriendshipVerificationRaw(context, request, cq));
     }
-    ::grpc::Status NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::message::SendChattingMsgResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>> AsyncNormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>>(AsyncNormalChattingMsgRaw(context, request, cq));
+    ::grpc::Status SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::message::ChattingTextMsgResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>> AsyncSendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>>(AsyncSendChattingTextMsgRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>> PrepareAsyncNormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>>(PrepareAsyncNormalChattingMsgRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>> PrepareAsyncSendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>>(PrepareAsyncSendChattingTextMsgRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response, std::function<void(::grpc::Status)>) override;
-      void SendFriendRequest(::grpc::ClientContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, std::function<void(::grpc::Status)>) override;
-      void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, std::function<void(::grpc::Status)>) override;
+      void SendFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, std::function<void(::grpc::Status)>) override;
+      void ConfirmFriendRequest(::grpc::ClientContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, std::function<void(::grpc::Status)>) override;
       void FriendshipVerification(::grpc::ClientContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response, std::function<void(::grpc::Status)>) override;
-      void NormalChattingMsg(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response, std::function<void(::grpc::Status)>) override;
+      void SendChattingTextMsg(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -1535,18 +1695,18 @@ class DistributedChattingService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>* AsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::AddNewFriendResponse>* PrepareAsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::AddNewFriendRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>* AsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>* PrepareAsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>* AsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>* PrepareAsyncSendFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>* AsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::FriendResponse>* PrepareAsyncConfirmFriendRequestRaw(::grpc::ClientContext* context, const ::message::FriendRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>* AsyncFriendshipVerificationRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::message::AuthoriseResponse>* PrepareAsyncFriendshipVerificationRaw(::grpc::ClientContext* context, const ::message::AuthoriseRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>* AsyncNormalChattingMsgRaw(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::message::SendChattingMsgResponse>* PrepareAsyncNormalChattingMsgRaw(::grpc::ClientContext* context, const ::message::SendChattingMsgRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>* AsyncSendChattingTextMsgRaw(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::message::ChattingTextMsgResponse>* PrepareAsyncSendChattingTextMsgRaw(::grpc::ClientContext* context, const ::message::ChattingTextMsgRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SendFriendRequest_;
     const ::grpc::internal::RpcMethod rpcmethod_ConfirmFriendRequest_;
     const ::grpc::internal::RpcMethod rpcmethod_FriendshipVerification_;
-    const ::grpc::internal::RpcMethod rpcmethod_NormalChattingMsg_;
+    const ::grpc::internal::RpcMethod rpcmethod_SendChattingTextMsg_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -1555,13 +1715,13 @@ class DistributedChattingService final {
     Service();
     virtual ~Service();
     // A send friend request message to another user B
-    virtual ::grpc::Status SendFriendRequest(::grpc::ServerContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response);
+    virtual ::grpc::Status SendFriendRequest(::grpc::ServerContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response);
     // User B agreed with user A's friend adding request
-    virtual ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response);
+    virtual ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response);
     // Verify that B is still A's friend:
     virtual ::grpc::Status FriendshipVerification(::grpc::ServerContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response);
     // transfer chatting message from user A to B
-    virtual ::grpc::Status NormalChattingMsg(::grpc::ServerContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response);
+    virtual ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SendFriendRequest : public BaseClass {
@@ -1575,11 +1735,11 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSendFriendRequest(::grpc::ServerContext* context, ::message::AddNewFriendRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::AddNewFriendResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSendFriendRequest(::grpc::ServerContext* context, ::message::FriendRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::FriendResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -1595,11 +1755,11 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestConfirmFriendRequest(::grpc::ServerContext* context, ::message::AuthoriseRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::AuthoriseResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestConfirmFriendRequest(::grpc::ServerContext* context, ::message::FriendRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::FriendResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -1624,26 +1784,26 @@ class DistributedChattingService final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_NormalChattingMsg : public BaseClass {
+  class WithAsyncMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_NormalChattingMsg() {
+    WithAsyncMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodAsync(3);
     }
-    ~WithAsyncMethod_NormalChattingMsg() override {
+    ~WithAsyncMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestNormalChattingMsg(::grpc::ServerContext* context, ::message::SendChattingMsgRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::SendChattingMsgResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSendChattingTextMsg(::grpc::ServerContext* context, ::message::ChattingTextMsgRequest* request, ::grpc::ServerAsyncResponseWriter< ::message::ChattingTextMsgResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SendFriendRequest<WithAsyncMethod_ConfirmFriendRequest<WithAsyncMethod_FriendshipVerification<WithAsyncMethod_NormalChattingMsg<Service > > > > AsyncService;
+  typedef WithAsyncMethod_SendFriendRequest<WithAsyncMethod_ConfirmFriendRequest<WithAsyncMethod_FriendshipVerification<WithAsyncMethod_SendChattingTextMsg<Service > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SendFriendRequest : public BaseClass {
    private:
@@ -1651,25 +1811,25 @@ class DistributedChattingService final {
    public:
     WithCallbackMethod_SendFriendRequest() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::AddNewFriendRequest, ::message::AddNewFriendResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::FriendRequest, ::message::FriendResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::AddNewFriendRequest* request, ::message::AddNewFriendResponse* response) { return this->SendFriendRequest(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response) { return this->SendFriendRequest(context, request, response); }));}
     void SetMessageAllocatorFor_SendFriendRequest(
-        ::grpc::MessageAllocator< ::message::AddNewFriendRequest, ::message::AddNewFriendResponse>* allocator) {
+        ::grpc::MessageAllocator< ::message::FriendRequest, ::message::FriendResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::AddNewFriendRequest, ::message::AddNewFriendResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::FriendRequest, ::message::FriendResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_SendFriendRequest() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* SendFriendRequest(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_ConfirmFriendRequest : public BaseClass {
@@ -1678,25 +1838,25 @@ class DistributedChattingService final {
    public:
     WithCallbackMethod_ConfirmFriendRequest() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::AuthoriseRequest, ::message::AuthoriseResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::FriendRequest, ::message::FriendResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::AuthoriseRequest* request, ::message::AuthoriseResponse* response) { return this->ConfirmFriendRequest(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::message::FriendRequest* request, ::message::FriendResponse* response) { return this->ConfirmFriendRequest(context, request, response); }));}
     void SetMessageAllocatorFor_ConfirmFriendRequest(
-        ::grpc::MessageAllocator< ::message::AuthoriseRequest, ::message::AuthoriseResponse>* allocator) {
+        ::grpc::MessageAllocator< ::message::FriendRequest, ::message::FriendResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::AuthoriseRequest, ::message::AuthoriseResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::FriendRequest, ::message::FriendResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_ConfirmFriendRequest() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ConfirmFriendRequest(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_FriendshipVerification : public BaseClass {
@@ -1726,33 +1886,33 @@ class DistributedChattingService final {
       ::grpc::CallbackServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_NormalChattingMsg : public BaseClass {
+  class WithCallbackMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_NormalChattingMsg() {
+    WithCallbackMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::message::SendChattingMsgRequest, ::message::SendChattingMsgResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::message::ChattingTextMsgRequest, ::message::ChattingTextMsgResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::message::SendChattingMsgRequest* request, ::message::SendChattingMsgResponse* response) { return this->NormalChattingMsg(context, request, response); }));}
-    void SetMessageAllocatorFor_NormalChattingMsg(
-        ::grpc::MessageAllocator< ::message::SendChattingMsgRequest, ::message::SendChattingMsgResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::message::ChattingTextMsgRequest* request, ::message::ChattingTextMsgResponse* response) { return this->SendChattingTextMsg(context, request, response); }));}
+    void SetMessageAllocatorFor_SendChattingTextMsg(
+        ::grpc::MessageAllocator< ::message::ChattingTextMsgRequest, ::message::ChattingTextMsgResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::SendChattingMsgRequest, ::message::SendChattingMsgResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::message::ChattingTextMsgRequest, ::message::ChattingTextMsgResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_NormalChattingMsg() override {
+    ~WithCallbackMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* NormalChattingMsg(
-      ::grpc::CallbackServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* SendChattingTextMsg(
+      ::grpc::CallbackServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SendFriendRequest<WithCallbackMethod_ConfirmFriendRequest<WithCallbackMethod_FriendshipVerification<WithCallbackMethod_NormalChattingMsg<Service > > > > CallbackService;
+  typedef WithCallbackMethod_SendFriendRequest<WithCallbackMethod_ConfirmFriendRequest<WithCallbackMethod_FriendshipVerification<WithCallbackMethod_SendChattingTextMsg<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SendFriendRequest : public BaseClass {
@@ -1766,7 +1926,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1783,7 +1943,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1806,18 +1966,18 @@ class DistributedChattingService final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_NormalChattingMsg : public BaseClass {
+  class WithGenericMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_NormalChattingMsg() {
+    WithGenericMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodGeneric(3);
     }
-    ~WithGenericMethod_NormalChattingMsg() override {
+    ~WithGenericMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1834,7 +1994,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1854,7 +2014,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1883,22 +2043,22 @@ class DistributedChattingService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_NormalChattingMsg : public BaseClass {
+  class WithRawMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_NormalChattingMsg() {
+    WithRawMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodRaw(3);
     }
-    ~WithRawMethod_NormalChattingMsg() override {
+    ~WithRawMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestNormalChattingMsg(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSendChattingTextMsg(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -1917,7 +2077,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1939,7 +2099,7 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1969,25 +2129,25 @@ class DistributedChattingService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_NormalChattingMsg : public BaseClass {
+  class WithRawCallbackMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_NormalChattingMsg() {
+    WithRawCallbackMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodRawCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->NormalChattingMsg(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendChattingTextMsg(context, request, response); }));
     }
-    ~WithRawCallbackMethod_NormalChattingMsg() override {
+    ~WithRawCallbackMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* NormalChattingMsg(
+    virtual ::grpc::ServerUnaryReactor* SendChattingTextMsg(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1998,10 +2158,10 @@ class DistributedChattingService final {
     WithStreamedUnaryMethod_SendFriendRequest() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::AddNewFriendRequest, ::message::AddNewFriendResponse>(
+          ::message::FriendRequest, ::message::FriendResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::AddNewFriendRequest, ::message::AddNewFriendResponse>* streamer) {
+                     ::message::FriendRequest, ::message::FriendResponse>* streamer) {
                        return this->StreamedSendFriendRequest(context,
                          streamer);
                   }));
@@ -2010,12 +2170,12 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AddNewFriendRequest* /*request*/, ::message::AddNewFriendResponse* /*response*/) override {
+    ::grpc::Status SendFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSendFriendRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::AddNewFriendRequest,::message::AddNewFriendResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSendFriendRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::FriendRequest,::message::FriendResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ConfirmFriendRequest : public BaseClass {
@@ -2025,10 +2185,10 @@ class DistributedChattingService final {
     WithStreamedUnaryMethod_ConfirmFriendRequest() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::AuthoriseRequest, ::message::AuthoriseResponse>(
+          ::message::FriendRequest, ::message::FriendResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::AuthoriseRequest, ::message::AuthoriseResponse>* streamer) {
+                     ::message::FriendRequest, ::message::FriendResponse>* streamer) {
                        return this->StreamedConfirmFriendRequest(context,
                          streamer);
                   }));
@@ -2037,12 +2197,12 @@ class DistributedChattingService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::AuthoriseRequest* /*request*/, ::message::AuthoriseResponse* /*response*/) override {
+    ::grpc::Status ConfirmFriendRequest(::grpc::ServerContext* /*context*/, const ::message::FriendRequest* /*request*/, ::message::FriendResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedConfirmFriendRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::AuthoriseRequest,::message::AuthoriseResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedConfirmFriendRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::FriendRequest,::message::FriendResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_FriendshipVerification : public BaseClass {
@@ -2072,35 +2232,35 @@ class DistributedChattingService final {
     virtual ::grpc::Status StreamedFriendshipVerification(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::AuthoriseRequest,::message::AuthoriseResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_NormalChattingMsg : public BaseClass {
+  class WithStreamedUnaryMethod_SendChattingTextMsg : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_NormalChattingMsg() {
+    WithStreamedUnaryMethod_SendChattingTextMsg() {
       ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::message::SendChattingMsgRequest, ::message::SendChattingMsgResponse>(
+          ::message::ChattingTextMsgRequest, ::message::ChattingTextMsgResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::message::SendChattingMsgRequest, ::message::SendChattingMsgResponse>* streamer) {
-                       return this->StreamedNormalChattingMsg(context,
+                     ::message::ChattingTextMsgRequest, ::message::ChattingTextMsgResponse>* streamer) {
+                       return this->StreamedSendChattingTextMsg(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_NormalChattingMsg() override {
+    ~WithStreamedUnaryMethod_SendChattingTextMsg() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status NormalChattingMsg(::grpc::ServerContext* /*context*/, const ::message::SendChattingMsgRequest* /*request*/, ::message::SendChattingMsgResponse* /*response*/) override {
+    ::grpc::Status SendChattingTextMsg(::grpc::ServerContext* /*context*/, const ::message::ChattingTextMsgRequest* /*request*/, ::message::ChattingTextMsgResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedNormalChattingMsg(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::SendChattingMsgRequest,::message::SendChattingMsgResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSendChattingTextMsg(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::message::ChattingTextMsgRequest,::message::ChattingTextMsgResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SendFriendRequest<WithStreamedUnaryMethod_ConfirmFriendRequest<WithStreamedUnaryMethod_FriendshipVerification<WithStreamedUnaryMethod_NormalChattingMsg<Service > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SendFriendRequest<WithStreamedUnaryMethod_ConfirmFriendRequest<WithStreamedUnaryMethod_FriendshipVerification<WithStreamedUnaryMethod_SendChattingTextMsg<Service > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SendFriendRequest<WithStreamedUnaryMethod_ConfirmFriendRequest<WithStreamedUnaryMethod_FriendshipVerification<WithStreamedUnaryMethod_NormalChattingMsg<Service > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SendFriendRequest<WithStreamedUnaryMethod_ConfirmFriendRequest<WithStreamedUnaryMethod_FriendshipVerification<WithStreamedUnaryMethod_SendChattingTextMsg<Service > > > > StreamedService;
 };
 
 }  // namespace message

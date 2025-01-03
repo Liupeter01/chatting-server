@@ -26,16 +26,20 @@ service BalancerService {
   rpc UserLoginToServer(LoginChattingServer) returns (LoginChattingResponse) {}
 
         //register current chatting server to balance server
-      rpc RegisterChattingServerInstance(GrpcChattingServerRegRequest) returns (GrpcChattingServerResponse) {}
+      rpc RegisterChattingServerInstance(GrpcRegisterRequest) returns (GrpcStatusResponse) {}
 
   // register current grpc server which belongs to chattingserver to balance
   // server
-  rpc RegisterChattingGrpcServer(GrpcChattingServerRegRequest)
-      returns (GrpcChattingServerResponse) {}
+  rpc RegisterChattingGrpcServer(GrpcRegisterRequest )
+      returns (GrpcStatusResponse) {}
 
       // when chatting server shutdown delete its existance in balance server
-        rpc ChattingServerShutDown(GrpcChattingServerShutdownRequest)
-      returns (GrpcChattingServerResponse) {}
+        rpc ChattingServerShutDown(GrpcShutdownRequest)
+      returns (GrpcStatusResponse) {}
+
+            // when chatting grpc server shutdown delete its existance in balance server
+        rpc ChattingGrpcServerShutDown(GrpcShutdownRequest)
+      returns (GrpcStatusResponse) {}
 
   // chatting server acquires other servers info through this service
   rpc GetPeerChattingServerInfo(PeerListsRequest) returns (PeerResponse) {}
@@ -80,25 +84,25 @@ message PeerResponse {
   repeated ServerInfo lists = 2;
 }
 
-message GrpcChattingServerRegRequest { ServerInfo info = 1; }
-message GrpcChattingServerShutdownRequest { string cur_server = 1; }
-message GrpcChattingServerResponse { int32 error = 1; }
+message GrpcRegisterRequest { ServerInfo info = 1; }
+message GrpcShutdownRequest { string cur_server = 1; }
+message GrpcStatusResponse { int32 error = 1; }
 
 /*prepared for distributed chatting service*/
 service DistributedChattingService {
 
   // A send friend request message to another user B
-  rpc SendFriendRequest(AddNewFriendRequest) returns (AddNewFriendResponse) {}
+  rpc SendFriendRequest(FriendRequest) returns (FriendResponse) {}
 
   // User B agreed with user A's friend adding request
-  rpc ConfirmFriendRequest(AuthoriseRequest) returns (AuthoriseResponse) {}
+  rpc ConfirmFriendRequest(FriendRequest) returns (FriendResponse) {}
 
   // Verify that B is still A's friend:
   rpc FriendshipVerification(AuthoriseRequest) returns (AuthoriseResponse) {}
 
   // transfer chatting message from user A to B
-  rpc NormalChattingMsg(SendChattingMsgRequest)
-      returns (SendChattingMsgResponse) {}
+  rpc SendChattingTextMsg(ChattingTextMsgRequest)
+      returns (ChattingTextMsgResponse) {}
 }
 
 /*
@@ -106,7 +110,7 @@ service DistributedChattingService {
  * A wait for Authorise message
  * we still need src/dst_uuid to verify sender's' and receiver's' identiy
  */
-message AddNewFriendRequest {
+message FriendRequest {
   int32 src_uuid = 1;   // request from who
   int32 dst_uuid = 2;   // target
   string nick_name = 3; // src nick name
@@ -116,7 +120,7 @@ message AddNewFriendRequest {
   string description = 7;     //src description
   int32 sex = 8;
 }
-message AddNewFriendResponse {
+message FriendResponse {
   int32 error = 1;
   int32 src_uuid = 2; // request from who
   int32 dst_uuid = 3; // target
@@ -142,14 +146,21 @@ message AuthoriseResponse {
   int32 dst_uuid = 3; // target
 }
 
-/*we still need src/dst_uuid to verify sender's' and receiver's' identiy*/
-message SendChattingMsgRequest {
-  int32 src_uuid = 1; // request from who
-  int32 dst_uuid = 2; // target
-  string message = 3; // send message
+message ChattingHistoryData{
+    string msg_sender = 1;
+   string msg_receiver = 2;
+    string msg_id = 3;
+    string msg_content = 4;
 }
 
-message SendChattingMsgResponse {
+/*we still need src/dst_uuid to verify sender's' and receiver's' identiy*/
+message ChattingTextMsgRequest {
+  int32 src_uuid = 1; // request from who
+  int32 dst_uuid = 2; // target
+   repeated ChattingHistoryData lists = 3;       //send message array
+}
+
+message ChattingTextMsgResponse {
   int32 error = 1;
   int32 src_uuid = 2; // request from who
   int32 dst_uuid = 3; // target

@@ -12,9 +12,11 @@
 #include <singleton/singleton.hpp>
 #include <thread>
 #include <unordered_map>
+#include <vector>
 
 /*declaration*/
 struct UserNameCard;
+struct UserFriendRequest;
 
 class SyncLogic : public Singleton<SyncLogic> {
   friend class Singleton<SyncLogic>;
@@ -33,6 +35,19 @@ public:
   ~SyncLogic();
   void commit(pair recv_node);
 
+public:
+  static void generateErrorMessage(const std::string &log, ServiceType type,
+                                   ServiceStatus status, SessionPtr conn);
+
+  /*
+   * get user's basic info(name, age, sex, ...) from redis
+   * 1. we are going to search for info inside redis first, if nothing found,
+   * then goto 2
+   * 2. searching for user info inside mysql
+   */
+  static std::optional<std::unique_ptr<UserNameCard>>
+  getUserBasicInfo(const std::string &key);
+
 private:
   SyncLogic();
 
@@ -41,8 +56,6 @@ private:
   void processing();
   void registerCallbacks();
   void execute(pair &&node);
-  void generateErrorMessage(const std::string &log, ServiceType type,
-                            ServiceStatus status, SessionPtr conn);
 
   /*client enter current server*/
   void incrementConnection();
@@ -73,14 +86,42 @@ private:
                                     std::shared_ptr<Session> session,
                                     NodePtr recv);
 
+  /*Handling the user send chatting text msg to others*/
+  void handlingTextChatMsg(ServiceType srv_type,
+                                std::shared_ptr<Session> session,
+                                NodePtr recv);
+
+  /*Handling the user send chatting voice msg to others*/
+  void handlingVoiceChatMsg(ServiceType srv_type,
+            std::shared_ptr<Session> session,
+            NodePtr recv);
+
+  /*Handling the user send chatting video msg to others*/
+  void handlingVideoChatMsg(ServiceType srv_type,
+            std::shared_ptr<Session> session,
+            NodePtr recv);
+
   /*
-   * get user's basic info(name, age, sex, ...) from redis
-   * 1. we are going to search for info inside redis first, if nothing found,
-   * then goto 2
-   * 2. searching for user info inside mysql
+   * get friend request list from the database
+   * @param: startpos: get friend request from the index[startpos]
+   * @param: interval: how many requests are going to acquire [startpos,
+   * startpos + interval)
    */
-  std::optional<std::unique_ptr<UserNameCard>>
-  getUserBasicInfo(const std::string &key);
+  std::optional<std::vector<std::unique_ptr<UserFriendRequest>>>
+  getFriendRequestInfo(const std::string &dst_uuid,
+                       const std::size_t start_pos = 0,
+                       const std::size_t interval = 10);
+
+  /*
+   * acquire Friend List
+   * get existing authenticated bid-directional friend from database
+   * @param: startpos: get friend from the index[startpos]
+   * @param: interval: how many friends re going to acquire [startpos, startpos
+   * + interval)
+   */
+   std::optional<std::vector<std::unique_ptr<UserNameCard>>>
+             getAuthFriendsInfo(const std::string& dst_uuid, const std::size_t
+             start_pos = 0, const std::size_t interval = 10);
 
 public:
   /*redis*/

@@ -1,11 +1,11 @@
 #pragma once
 #ifndef _GRPCDISTRIBUTEDCHATTINGSERVICE_HPP_
 #define _GRPCDISTRIBUTEDCHATTINGSERVICE_HPP_
-#include <optional>
-#include <network/def.hpp>
-#include <unordered_map>
 #include <grpc/BalanceServicePool.hpp>
 #include <grpc/DistributedChattingServicePool.hpp>
+#include <network/def.hpp>
+#include <optional>
+#include <unordered_map>
 
 class gRPCDistributedChattingService
     : public Singleton<gRPCDistributedChattingService> {
@@ -14,15 +14,27 @@ class gRPCDistributedChattingService
 
 public:
   virtual ~gRPCDistributedChattingService() = default;
-  message::AddNewFriendResponse sendFriendRequest(const  std::string& server_name, const message::AddNewFriendRequest& req);
+  message::FriendResponse sendFriendRequest(const std::string &server_name,
+                                            const message::FriendRequest &req);
+  message::FriendResponse
+  confirmFriendRequest(const std::string &server_name,
+                       const message::FriendRequest &req);
+
+  message::ChattingTextMsgResponse
+   sendChattingTextMsg(const std::string& server_name,
+            const message::ChattingTextMsgRequest& req);
+
+protected:
+  void updateGrpcPeerLists();
 
 private:
-   std::optional<std::shared_ptr<stubpool::details::DistributedChattingServicePoolImpl>> getTargetChattingServer(const std::string& server_name);
+  std::optional<std::shared_ptr<stubpool::DistributedChattingServicePool>>
+  getTargetChattingServer(const std::string &server_name);
 
 private:
   std::unordered_map<
       /*server_name*/ std::string,
-      /*DistributedChattingServicePool*/ std::unique_ptr<
+      /*DistributedChattingServicePool*/ std::shared_ptr<
           stubpool::DistributedChattingServicePool>>
       m_pools;
 };

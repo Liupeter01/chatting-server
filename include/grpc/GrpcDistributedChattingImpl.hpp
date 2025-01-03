@@ -21,14 +21,14 @@ public:
   // A send friend request message to another user B
   virtual ::grpc::Status
   SendFriendRequest(::grpc::ServerContext *context,
-                    const ::message::AddNewFriendRequest *request,
-                    ::message::AddNewFriendResponse *response);
+                    const ::message::FriendRequest *request,
+                    ::message::FriendResponse *response);
 
   // User B agreed with user A's friend adding request
   virtual ::grpc::Status
   ConfirmFriendRequest(::grpc::ServerContext *context,
-                       const ::message::AuthoriseRequest *request,
-                       ::message::AuthoriseResponse *response);
+                       const ::message::FriendRequest *request,
+                       ::message::FriendResponse *response);
 
   // Verify that B is still A's friend:
   virtual ::grpc::Status
@@ -38,9 +38,9 @@ public:
 
   // transfer chatting message from user A to B
   virtual ::grpc::Status
-  NormalChattingMsg(::grpc::ServerContext *context,
-                    const ::message::SendChattingMsgRequest *request,
-                    ::message::SendChattingMsgResponse *response);
+            SendChattingTextMsg(::grpc::ClientContext* context,
+                      const ::message::ChattingTextMsgRequest* request,
+                      ::message::ChattingTextMsgResponse* response);
 
 private:
 };
